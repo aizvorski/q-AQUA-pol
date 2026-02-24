@@ -31,7 +31,7 @@ getpot.o
 	$(FC) -c $(FFLAGS) $< 
 
 getpot.x :  $(OBJ) $(OBJPOT)
-	$(FC) -o $@  $^ $(FFLAGS)
+	$(FC) -o $@  $^ $(LDFLAGS)
 
 clean :
 	rm *.o *.mod
