@@ -1,11 +1,12 @@
-#Generic makefile for fortran90
-FC := ifort 
-# serial
-#LIBS := -qmkl=sequential
-#FFLAGS := -r8 -O3
-# parallel  
-LIBS := -mkl=sequential
-FFLAGS := -r8 -O3 -qopenmp
+# Intel ifx makefile
+
+FC := ifx
+# FFLAGS := -r8 -O3 -axCORE-AVX2,CORE-AVX512 -mprefer-vector-width=512 -qopt-zmm-usage=high -qopenmp
+# LDFLAGS := -static-intel -qopenmp -qopenmp-link=static -qmkl=sequential
+
+FFLAGS := -r8 -O3 -axCORE-AVX2,CORE-AVX512 -mprefer-vector-width=512 -qopt-zmm-usage=high
+LDFLAGS := -static
+
 
 OBJ := \
 constants.o\
@@ -30,7 +31,7 @@ getpot.o
 	$(FC) -c $(FFLAGS) $< 
 
 getpot.x :  $(OBJ) $(OBJPOT)
-	$(FC) -o $@  $^ $(FFLAGS) $(LIBS)
+	$(FC) -o $@  $^ $(FFLAGS)
 
 clean :
-	rm *.o *.mod 
+	rm *.o *.mod
