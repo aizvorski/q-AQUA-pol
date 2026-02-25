@@ -1,11 +1,11 @@
 # Intel ifx makefile
 
 FC := ifx
-# FFLAGS := -r8 -O3 -axCORE-AVX2,CORE-AVX512 -mprefer-vector-width=512 -qopt-zmm-usage=high -qopenmp
-# LDFLAGS := -static-intel -qopenmp -qopenmp-link=static -qmkl=sequential
+FFLAGS := -r8 -O3 -axCORE-AVX2,CORE-AVX512 -mprefer-vector-width=512 -qopt-zmm-usage=high -qopenmp
+LDFLAGS := -static-intel -qopenmp -qopenmp-link=static -qmkl
 
-FFLAGS := -r8 -O3 -axCORE-AVX2,CORE-AVX512 -mprefer-vector-width=512 -qopt-zmm-usage=high
-LDFLAGS := -static
+# FFLAGS := -r8 -O3 -axCORE-AVX2,CORE-AVX512 -mprefer-vector-width=512 -qopt-zmm-usage=high
+# LDFLAGS := -static # pure static doesn't work here
 
 
 OBJ := \
